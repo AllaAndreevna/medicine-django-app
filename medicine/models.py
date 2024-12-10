@@ -1,3 +1,8 @@
+
+
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.db import models
 
 class Doctor(models.Model):
@@ -35,3 +40,33 @@ class Order(models.Model):
 class Analogs(models.Model):
     medicine1 = models.ForeignKey(Medicine, on_delete=models.CASCADE, related_name='medicine1')
     medicine2 = models.ForeignKey(Medicine, on_delete=models.CASCADE, related_name='medicine2')
+
+
+# регистрация
+# class User(models.Model):
+#     USER_TYPE_CHOICES = (
+#         ('patient', 'Patient'),
+#         ('doctor', 'Doctor'),
+#         ('pharmacist', 'Pharmacist'),
+#     )
+    
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
+
+#     # Дополнительные поля для профиля, если необходимо
+#     # Например, для пациента можно добавить поле с номером телефона
+#     phone_number = models.CharField(max_length=15, blank=True)
+
+
+
+
+# class UserRegistrationForm(UserCreationForm):
+#     user_type = forms.ChoiceField(choices=[
+#         ('patient', 'Patient'),
+#         ('doctor', 'Doctor'),
+#         ('pharmacist', 'Pharmacist'),
+#     ])
+
+#     class Meta:
+#         model = User
+#         fields = ['username', 'password1', 'password2', 'user_type']
